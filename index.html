@@ -117,12 +117,14 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .product-card img {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
+      .product-card img {
+          width: 100%;
+          height: 300px;
+          object-fit: contain;
+          border-radius: 8px;
+          background-color: #f9f9f9; /* خلفية للحفاظ على الشكل */
+      }
+
 
     .product-card h3 {
       margin: 10px 0;
@@ -142,6 +144,12 @@
       margin: 10px 0;
     }
 
+      .product-card .code {
+          font-size: 16px;
+          color: #ff0202;
+          font-weight: bold;
+          margin: 10px 0;
+      }
     .product-card button {
       margin-top: 10px;
       background-color: #d4af37;
@@ -166,6 +174,62 @@
       margin-top: 30px; /* المسافة بين آخر كارت وfooter */
       position: relative;
     }
+      .carousel {
+          position: relative;
+          width: 100%;
+          height: 300px;
+          overflow: hidden;
+      }
+
+      .carousel-images {
+          display: flex;
+          transition: transform 0.5s ease;
+      }
+
+      .carousel-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          position: absolute;
+          top: 0;
+          left: 0;
+      }
+
+          .carousel-image.active {
+              opacity: 1;
+              position: relative;
+          }
+
+      .carousel-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(0, 0, 0, 0.5);
+          color: white;
+          border: none;
+          font-size: 30px;
+          padding: 10px;
+          cursor: pointer;
+          z-index: 1;
+          border-radius: 50%;
+      }
+
+          .carousel-button.prev {
+              left: 10px;
+          }
+
+          .carousel-button.next {
+              right: 10px;
+          }
+
+          .carousel-button:hover {
+              background: rgba(0, 0, 0, 0.7);
+          }
+
+
+
   </style>
 </head>
 <body>
@@ -190,13 +254,22 @@
       <center><h1>السلاسل</h1></center>
       <div class="products">
 
-        <div class="product-card">
-          <img src="images/necklace1.jpg" alt="سلسلة 1">
-          <h3>سلسلة فضية</h3>
-          <p>وصف المنتج: سلسلة أنيقة مصنوعة من الفضة النقية.</p>
-          <p class="price">300 جنيه</p> <!-- السعر -->
-          <button onclick="sendWhatsAppMessage('سلسلة فضية' , '123')">اشتري الآن</button>
-        </div>
+          <div class="product-card">
+              <div class="carousel">
+                  <button class="carousel-button next" onclick="changeImage('prev')">&#10094;</button>
+                  <div class="carousel-images">
+                      <img src="bracelet/brac1.png" class="carousel-image active">
+                      <img src="takm/takm1.png" class="carousel-image">
+                      <img src="bracelet/brac3.png" class="carousel-image">
+                  </div>
+                  <button class="carousel-button prev" onclick="changeImage('next')">&#10095;</button>
+              </div>
+              <h3>سلسلة فضية</h3>
+              <h6 class="code">الكود: 1001</h6>
+              <p>وصف المنتج: سلسلة أنيقة مصنوعة من الفضة النقية.</p>
+              <p class="price">300 جنيه</p> <!-- السعر -->
+              <button onclick="sendWhatsAppMessage('سلسلة فضية' , '123')">اشتري الآن</button>
+          </div>
 
         
 
@@ -211,52 +284,58 @@
        <div class="products">
 
            <div class="product-card">
-               <img src="bracelet/brac1.png" alt="غويشة 1">
+
+               <img src="bracelet/brac1.png" alt="غويشة 3">
                <h3>غويشة فضية</h3>
+               <h6 class="code">الكود: 2001</h6>
                <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
-               <p class="price">250 جنيه</p> <!-- السعر -->
-               <button onclick="sendWhatsAppMessage('غويشة فضية' , '123')">اشتري الآن</button>
+               <p class="price">20 جنيه</p> <!-- السعر -->
+               <button onclick="sendWhatsAppMessage('غويشة فضية' , '2001')">اشتري الآن</button>
+           </div>
+           <div class="product-card">
+               <img src="bracelet/brac2.png" alt="غويشة بينك صغيره">
+               <h3>غويشة فضية</h3>
+               <h6 class="code">الكود: 2003</h6>
+               <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
+               <p class="price">20 جنيه</p> <!-- السعر -->
+               <button onclick="sendWhatsAppMessage('غويشة فضية' , '2003')">اشتري الآن</button>
            </div>
 
-           <div class="product-card">
-               <img src="bracelet/brac2.png" alt="غويشة 2">
-               <h3>غويشة فضية</h3>
-               <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
-               <p class="price">250 جنيه</p> <!-- السعر -->
-               <button onclick="sendWhatsAppMessage('غويشة فضية' , '123')">اشتري الآن</button>
-           </div>
 
            <div class="product-card">
                <img src="bracelet/brac3.png" alt="غويشة 3">
                <h3>غويشة فضية</h3>
+               <h6 class="code">الكود: 2003</h6>
                <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
                <p class="price">20 جنيه</p> <!-- السعر -->
-               <button onclick="sendWhatsAppMessage('غويشة فضية' , '123')">اشتري الآن</button>
+               <button onclick="sendWhatsAppMessage('غويشة فضية' , '2003')">اشتري الآن</button>
            </div>
-
 
            <div class="product-card">
                <img src="bracelet/brac4.png" alt="غويشة 4">
-               <h3>غويشة فضية</h3>
-               <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
-               <p class="price">20 جنيه</p> <!-- السعر -->
-               <button onclick="sendWhatsAppMessage('غويشة فضية' , '123')">اشتري الآن</button>
+               <h3>لمسة من الالوان</h3>
+               <h6 class="code">الكود: 2004</h6>
+               <p>غويشه تجمع بين الأحمر والأبيض تمنحك لمسه من الصفاء والجمال الطبيعي</p>
+               <p class="price">20 جنيه</p>
+               <button onclick="sendWhatsAppMessage('لمسة من الالوان' , '2004')">اشتري الآن</button>
            </div>
 
            <div class="product-card">
                <img src="bracelet/brac5.png" alt="غويشة 5">
-               <h3>غويشة فضية</h3>
-               <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
-               <p class="price">20 جنيه</p> <!-- السعر -->
-               <button onclick="sendWhatsAppMessage('غويشة فضية' , '123')">اشتري الآن</button>
+               <h3>بريق الشمس</h3>
+               <h6 class="code">الكود: 2005</h6>
+               <p>غويشة بلون مشرق تناسب الاطلالات اليومية بكل بساطه</p>
+               <p class="price">20 جنيه</p>
+               <button onclick="sendWhatsAppMessage('غويشة بريق الشمس' , '2005')">اشتري الآن</button>
            </div>
 
            <div class="product-card">
                <img src="bracelet/brac6.png" alt="غويشة 6">
-               <h3>غويشة فضية</h3>
-               <p>وصف المنتج: غويشة أنيقة من الفضة الإيطالية.</p>
+               <h3>التألق الملكي</h3>
+               <h6 class="code">الكود: 2006</h6>
+               <p>غويشة بتدرجات البنفسجي الفاتح لمظهر أنيق يناسب جميع المناسبات</p>
                <p class="price">20 جنيه</p> <!-- السعر -->
-               <button onclick="sendWhatsAppMessage('غويشة فضية' , '123')">اشتري الآن</button>
+               <button onclick="sendWhatsAppMessage('غويشة التألق الملكي' , '2006')">اشتري الآن</button>
            </div>
 
            <!-- المزيد من الكروت -->
@@ -270,13 +349,14 @@
        <center><h1>الخواتم</h1></center>
       <div class="products">
 
-        <div class="product-card">
-          <img src="images/ring1.jpg" alt="خاتم 1">
-          <h3>خاتم فضي</h3>
-          <p>وصف المنتج: خاتم بسيط وأنيق من الفضة.</p>
-          <p class="price">200 جنيه</p> <!-- السعر -->
-          <button onclick="sendWhatsAppMessage('خاتم فضي' , '123')">اشتري الآن</button>
-        </div>
+          <div class="product-card">
+              <img src="images/ring1.jpg" alt="خاتم 1">
+              <h3>خاتم فضي</h3>
+              <h6 class="code">الكود: 3001</h6>
+              <p>وصف المنتج: خاتم بسيط وأنيق من الفضة.</p>
+              <p class="price">200 جنيه</p> <!-- السعر -->
+              <button onclick="sendWhatsAppMessage('خاتم فضي' , '123')">اشتري الآن</button>
+          </div>
 
         <!-- المزيد من الكروت -->
       </div>
@@ -288,13 +368,14 @@
        <center><h1>الأطقم</h1></center>
       <div class="products">
 
-        <div class="product-card">
-          <img src="takm/takm1.png" alt="طقم 1">
-          <h3>طقم فضية</h3>
-          <p>وصف المنتج: طقم أنيقة من الفضة الإيطالية.</p>
-          <p class="price">60 جنيه</p> <!-- السعر -->
-          <button onclick="sendWhatsAppMessage('طقم فضية' , '123')">اشتري الآن</button>
-        </div>
+          <div class="product-card">
+              <img src="takm/takm1.png" alt="طقم 1">
+              <h3>روح البحر</h3>
+              <h6 class="code">الكود: 4001</h6>
+              <p>طقم أنيق مستوحي من البحر ,مصنوع من خرز بالوان الرمال مع صدفة طبيعيه ولمسات ذهبية لإطلالة مميزة</p>
+              <p class="price">75 جنيه</p> <!-- السعر -->
+              <button onclick="sendWhatsAppMessage('طقم فضية' , '123')">اشتري الآن</button>
+          </div>
 
         <!-- المزيد من الكروت -->
       </div>
@@ -332,7 +413,44 @@
         const message = `اريد شراء : ${productName}   الكود : ${code}`;
       const url = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
-    }
+      }
+      // عشان نعمل تأثير الانتقال عند الضغط على الأزرار
+      // وظيفة لتغيير الصورة بناءً على الزر المضغوط (التالي أو السابق)
+      // وظيفة لتغيير الصورة بناءً على الزر المضغوط (التالي أو السابق)
+      let currentIndex = 0;
+
+      function changeImage(direction) {
+          const images = document.querySelectorAll('.carousel-image');
+          const totalImages = images.length;
+
+          // Hide current image
+          images[currentIndex].classList.remove('active');
+
+          // Update index based on direction
+          if (direction === 'next') {
+              currentIndex = (currentIndex + 1) % totalImages;
+          } else if (direction === 'prev') {
+              currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+          }
+
+          // Show the new image
+          images[currentIndex].classList.add('active');
+      }
+
+
+
+
+
   </script>
 </body>
 </html>
+
+<!--
+    <div class="carousel">
+    <button class="carousel-button next" onclick="changeImage(this, 'next')">‹</button>
+    <button class="carousel-button prev" onclick="changeImage(this, 'prev')">›</button>
+    <img src="bracelet/brac1.png" alt="صورة 1" class="carousel-image active">
+    <img src="bracelet/brac2.png" alt="صورة 2" class="carousel-image">
+    <img src="bracelet/brac3.png" alt="صورة 3" class="carousel-image">
+</div>
+    --!>
