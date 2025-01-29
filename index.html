@@ -390,10 +390,10 @@
                <div class="carousel">
                   <button class="carousel-button next" onclick="changeImage('prev')">&#10094;</button>
                   <div class="carousel-images">
-                      <img src="takm/takm11.png" class="carousel-image active">
-                      <img src="takm/takm12.png" class="carousel-image">
-                      <img src="takm/takm13.png" class="carousel-image">
-                      <img src="takm/takm14.png" class="carousel-image">
+                      <img src="takm/Takm11.png" class="carousel-image active">
+                      <img src="takm/Takm12.png" class="carousel-image">
+                      <img src="takm/Takm13.png" class="carousel-image">
+                      <img src="takm/Takm14.png" class="carousel-image">
                   </div>
                   <button class="carousel-button prev" onclick="changeImage('next')">&#10095;</button>
               </div>
@@ -446,26 +446,23 @@
       // وظيفة لتغيير الصورة بناءً على الزر المضغوط (التالي أو السابق)
       let currentIndex = 0;
 
-      function changeImage(direction) {
-          const images = document.querySelectorAll('.carousel-image');
-          const totalImages = images.length;
+function changeImage(direction) {
+  const images = document.querySelectorAll('.carousel-image');
+  const totalImages = images.length;
 
-          // Hide current image
-          images[currentIndex].classList.remove('active');
+  // إخفاء الصورة الحالية
+  images[currentIndex].classList.remove('active');
 
-          // Update index based on direction
-          if (direction === 'next') {
-              currentIndex = (currentIndex + 1) % totalImages;
-          } else if (direction === 'prev') {
-              currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-          }
+  // تحديث الفهرس بناءً على الاتجاه
+  if (direction === 'next') {
+    currentIndex = (currentIndex + 1) % totalImages; // يعود إلى 0 عند الوصول إلى آخر صورة
+  } else if (direction === 'prev') {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // يعود إلى آخر صورة عند الضغط على السابق في أول صورة
+  }
 
-          // Show the new image
-          images[currentIndex].classList.add('active');
-      }
-
-
-
+  // إظهار الصورة الجديدة
+  images[currentIndex].classList.add('active');
+}
 
 
   </script>
